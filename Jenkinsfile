@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('testing job') {
             steps {
-                echo 'sudo docker ps -a'
+                sh 'sudo docker ps -a'
             }
         }
     }
