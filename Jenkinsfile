@@ -11,17 +11,17 @@ pipeline {
         }
         stage('stop containers') {
             steps {
-                echo 'sudo docker stop $(sudo docker ps -aq)'
+                sh 'sudo docker stop $(sudo docker ps -aq)'
             }
         }
         stage('delete old containers') {
             steps {
-                echo 'sudo docker rm $(sudo docker ps -aq)'
+                sh 'sudo docker rm $(sudo docker ps -aq)'
             }
         }
         stage('Build...') {
             steps {
-                echo 'sudo docker build .'
+                sh 'sudo docker build .'
             }
         }
     }
