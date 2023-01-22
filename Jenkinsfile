@@ -6,21 +6,22 @@ pipeline {
     stages {
         stage('docker containers') {
             steps {
-                sh 'sudo docker ps -a'
+               sh 'sudo docker ps -a'
             }
         }
-    }
-    stages {
-        stage('stop docker container') {
+        stage('stop containers') {
             steps {
-                sh 'sudo docker stop $(sudo docker ps -aq)'
+                echo 'sudo docker stop $(sudo docker ps -aq)'
             }
         }
-    }
-    stages {
-        stage('stop docker build') {
+        stage('delete old containers') {
             steps {
-                sh 'sudo docker build .)'
+                echo 'sudo docker rm $(sudo docker ps -aq)'
+            }
+        }
+        stage('Build...') {
+            steps {
+                echo 'sudo docker build .'
             }
         }
     }
