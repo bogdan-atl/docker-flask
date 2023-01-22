@@ -21,7 +21,12 @@ pipeline {
         }
         stage('Build...') {
             steps {
-                sh 'sudo docker build .'
+                sh 'sudo docker build -t flutter .'
+            }
+        }
+        stage('Start build') {
+            steps {
+                sh 'sudo docker run -d --name flutter -p 3000:3000 flutter'
             }
         }
     }
